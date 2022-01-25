@@ -1,0 +1,81 @@
+<MainWidget>:
+    orientation: 'vertical'
+    #PhotoImage: PhotoImage
+  
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: (1, None)
+        height: 60
+        Label:
+            id: ImageLabel
+            size_hint_x: 0.7
+            text: 'Image Label'
+        Button:
+            id: OpenButton
+            size_hint_x: 0.1
+            text: 'Open'
+            on_release: root.openDialog()
+        Button:
+            id: PrevButton
+            size_hint_x: 0.1
+            text: 'Prev'
+            on_release: root.prevPhoto()
+        Button:
+            id: NextButton
+            size_hint_x: 0.1
+            text: 'Next'
+            on_release: root.nextPhoto()
+
+    BoxLayout:
+        orientation: 'horizontal'
+        #size_hint: (1, 1)
+
+        Image:
+            id: PhotoImage
+            size_hint_x: 0.7
+
+        BoxLayout:
+            size_hint_x: 0.3
+            orientation: 'vertical'
+            
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: (1, None)
+                height: 40
+                Label:
+                    size_hint_x: 0.4
+                    text: 'Tag'
+                Label:
+                    size_hint_x: 0.6
+                    text: 'Value'
+
+            GridLayout:
+                id: exifGrid
+                cols: 2
+                row_force_default: True
+                row_default_height: 25
+                Label:
+                    size_hint_x: 0.4
+                    text: 'F Number'
+                Label:
+                    size_hint_x: 0.6
+                    text: '9'
+
+<FolderPickerDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Load"
+                on_release: root.open(filechooser.path)

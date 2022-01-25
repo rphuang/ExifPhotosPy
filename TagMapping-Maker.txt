@@ -1,0 +1,14 @@
+# tag mapping for Nikon
+# format: tag key = exifread's tag key
+Focus Mode=MakerNote FocusMode
+Quality=MakerNote Quality
+Lens=MakerNote LensType
+Lens Model=MakerNote LensMinMaxFocalMaxAperture
+Flash=MakerNote FlashMode
+Flash Compensation=MakerNote FlashCompensation
+Noise Reduction=MakerNote NoiseReduction
+High ISO Noise Reduction=MakerNote HighISONoiseReduction
+Sequence Number=MakerNote TotalShutterReleases
+#=MakerNote FlashBracketCompensationApplied
+#=MakerNote BracketingMode
+#=MakerNote AutoBracketRelease
