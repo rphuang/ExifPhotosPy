@@ -3,13 +3,13 @@ A simple Python program to view photos with EXIF metadata. ExifPhotos provides f
 * Flexible - customize your own list of tags to display
 * Extensible - customize your own metadata mapping to extract
 * Configurable UI
+
 Currently, ExifPhotos uses exifread to extract EXIF from file. The data quality of exifread is not as good as ExifTool but it is good enough to view most important EXIF info.
 
 # Getting Started
 1. Install dependencies
-	* Kivy (https://kivy.org/#home): pip install kivy[base]
+	* Kivy (https://kivy.org/doc/stable/gettingstarted/installation.html)
     * exifread (https://github.com/ianare/exif-py): pip install exifread
-	* Pillow (https://python-pillow.org/): pip install --upgrade Pillow
 2. Get ExifPhotosPy code from https://github.com/rphuang/ExifPhotosPy.
 3. In Windows, run the program from the folder: python exifMain.py
 4. Click "Open" to navigate to the folder with photos and click "Load". See Configuration to set default folder to start.
