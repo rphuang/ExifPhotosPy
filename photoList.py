@@ -44,6 +44,14 @@ class PhotoList():
         else:
             return None
 
+    def goto(self, index):
+        """ move to specified index move to the last photo if index is < 0 or > max """
+        if index < 0 or index >= len(self.photos):
+            self.index = len(self.photos) - 1
+        else:
+            self.index = index
+        return self.photos[self.index]
+
     def markPhoto(self, category, context):
         """ mark current folder with the category and context info """
         filePath = self.currentPhoto()

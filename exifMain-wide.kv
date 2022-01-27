@@ -8,8 +8,22 @@
         height: 60
         Label:
             id: ImageLabel
-            size_hint_x: 0.7
+            size_hint_x: 0.6
             text: 'Image Label'
+        TextInput:
+            id: PhotoIndex
+            size_hint_x: 0.04
+            multiline: False
+            text: '0'
+            padding: [20, 22, 6, 6]
+            on_text_validate: root.goto(self.text)
+        Label:
+            size_hint_x: 0.02
+            text: ' / '
+        Label:
+            id: PhotoCountLabel
+            size_hint_x: 0.04
+            text: '0'
         Button:
             id: OpenButton
             size_hint_x: 0.1

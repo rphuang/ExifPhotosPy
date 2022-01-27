@@ -1,3 +1,5 @@
+import sys
+
 import kivy
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
@@ -62,7 +64,10 @@ class MainWidget(BoxLayout):
         """ display file's name, image, and exif data """
         if filePath is not None:
             self.displayExifGrid(filePath)
-            self.ids.ImageLabel.text = '%s        %i/%i' %(filePath, self.photos.index+1, len(self.photos.photos))
+            self.ids.ImageLabel.text = filePath
+            if 'PhotoIndex' in self.ids:
+                self.ids.PhotoIndex.text = '%i' %(self.photos.index+1)
+                self.ids.PhotoCountLabel.text = '%i' %(len(self.photos.photos))
             # if orientation is not normal then transpose the image in a temporary file
             srcPath = transposeImage(filePath, self.exifdata)
             self.ids.PhotoImage.source = srcPath
@@ -77,6 +82,10 @@ class MainWidget(BoxLayout):
     def prevPhoto(self):
         """ move to prev photo if available """
         self.displayFile(self.photos.prev())
+
+    def goto(self, number):
+        """ move to specified number (index + 1). move to the last photo if number is < 1 or > max """
+        self.displayFile(self.photos.goto(int(number)-1))
 
     def displayExifGrid(self, filePath):
         """ display exif data """
@@ -119,11 +128,17 @@ class exifMainApp(App):
         return self.mainWidget
 
 if __name__ == '__main__':
+    configFile='exifMainConfig.txt'
+    if len(sys.argv) > 1:
+        configFile = sys.argv[1]
     # apply config settings
-    config = Config('exifMainConfig.txt', autoSave = False)
-    Window.size = (config.getOrAddInt('Window.width', 1600), config.getOrAddInt('Window.height', 1000))
-    Window.top = config.getOrAddInt('Window.top', 40)
-    Window.left = config.getOrAddInt('Window.left', 100)
+    config = Config(configFile, autoSave = False)
+    if config.getOrAddBool('Window.fullscreen', False):
+        Window.fullscreen = True
+    else:
+        Window.size = (config.getOrAddInt('Window.width', 1600), config.getOrAddInt('Window.height', 1000))
+        Window.top = config.getOrAddInt('Window.top', 40)
+        Window.left = config.getOrAddInt('Window.left', 100)
     app = exifMainApp(config)
     app.run()
 

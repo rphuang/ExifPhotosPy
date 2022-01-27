@@ -1,3 +1,4 @@
+Window.fullscreen=False
 Window.top=30
 Window.left=70
 Window.width=1800
