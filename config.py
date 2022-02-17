@@ -48,8 +48,12 @@ class Config(object):
 
     def getOrAddBool(self, key, defaultValue):
         """ get the bool setting by key, add a new key with defaultValue if no key """
-        val = self.getOrAdd(key, defaultValue).lower()
-        return val == '1' or val == 'true' or val == 'yes'
+        value = self.settings.get(key, None)
+        if value != None:
+            val = value.lower()
+            return val == '1' or val == 'true' or val == 'yes'
+        else:
+            return self.set(key, defaultValue)
 
     def getOrAddInt(self, key, defaultValue):
         """ get the integer setting by key, add a new key with defaultValue if no key """

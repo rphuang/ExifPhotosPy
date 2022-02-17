@@ -1,11 +1,11 @@
-Window.fullscreen=False
-Window.top=30
-Window.left=70
-Window.width=1800
-Window.height=1000
+# configuration for Android landscape mode
+Window.fullscreen=True
+ShowFullFilePath=True
+OverrideGridFontSize=True
+GridFontSize=36
 #
 TagMappingFiles=TagMapping-Std.txt, TagMapping-Maker.txt
-DefaultFolder=
+DefaultFolder=/storage/emulated/0/DCIM/Camera
 IncludeSubfolder=False
 DisplayTags=Date Taken, Image Width, Image Height, F Number, ISO, Focal Length, Focal Length In 35mm, Exposure Time, Exposure Program, Exposure Mode, Exposure Compensation,
             White Balance Mode, Orientation, Scene Capture Type, Metering Mode, Sensor Mode, Flash, Flash Compensation, Contrast, Saturation, Sharpness, Subject Distance,

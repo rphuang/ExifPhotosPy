@@ -11,8 +11,9 @@ Currently, ExifPhotos uses exifread to extract EXIF from file. The data quality 
 	* Kivy (https://kivy.org/doc/stable/gettingstarted/installation.html)
     * exifread (https://github.com/ianare/exif-py): pip install exifread
 2. Get ExifPhotosPy code from https://github.com/rphuang/ExifPhotosPy.
-3. In Windows, run the program from the folder: python exifMain.py
-4. Click "Open" to navigate to the folder with photos and click "Load". See Configuration to set default folder to start.
+3. Run ExifPhotos in Windows (see Notes for running in Android)
+    * run the command from the folder: python exifMain.py
+    * Click "Open" to navigate to the folder with photos and click "Load". See Configuration to set default folder to start.
 
 # Configuration
 
@@ -21,6 +22,9 @@ Currently, ExifPhotos uses exifread to extract EXIF from file. The data quality 
 * Window.left - set the left position for the ExifPhotos window
 * Window.width - set the width for the ExifPhotos window
 * Window.height - set the height for the ExifPhotos window
+* ShowFullFilePath - set True to display full path name of the image file
+* OverrideGridFontSize - set True to override the font size in the exif data grid
+* GridFontSize - specify the font size when OverrideGridFontSize is True
 * TagMappingFiles - specify comma separated list of files that define tag mapping
 * DefaultFolder - specify the default folder to open when ExifPhotos start 
 * IncludeSubfolder - set to True to include all photos from sub-folders
@@ -47,7 +51,11 @@ The UI is based on Python Kivy, so custom UI can be done by changing the exifMai
 
 # Issues & Future Development
 * To support swipe gesture.
-* Does Kivy really support Android? The Kivy Launcher disappeared from the Google Play Store. So, it needs extra efforts to test it in Android!
+* Run ExifPhotos in Android with Pydroid 3:
+    * install Pydroid 3
+    * copy the ExifPhotos files to Pydroid folder (should be under internal storage Android/data). It error out when using folders outside.
+    * copy the files from either android-landscape or android-portrait to the ExifPhotos folder
+    * from Pudroid 3, open exifMain.py and run
 * Leverage ExifTool to support more metadata (at least on Windows version)
 * Save the rotated photos (currently, the rotated image is saved in temp folder and only used for image display) 
  

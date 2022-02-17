@@ -1,4 +1,5 @@
 import sys
+import os
 
 import kivy
 from kivy.app import App
@@ -33,6 +34,12 @@ class MainWidget(BoxLayout):
         tags = config.getOrAdd('DisplayTags', 'Image Width, Image Height, Date Taken').split(',')
         for item in tags:
             self.displayTags.append(item.strip())
+        # get display config
+        self.overrideGridFontSize = config.getOrAddBool('OverrideGridFontSize', False)
+        if self.overrideGridFontSize:
+            self.gridFontSize = config.getOrAddInt('GridFontSize', 36)
+        self.showFullFilePath = config.getOrAddBool('ShowFullFilePath', True)
+
         # create PhotoList with starting folder
         self.defaultFolder = config.getOrAdd('DefaultFolder', '') 
         self.includeSubfolder = config.getOrAddBool('IncludeSubfolder', False)
@@ -43,8 +50,8 @@ class MainWidget(BoxLayout):
         """ popup dialog to select folder """
         content = FolderPickerDialog(self)
         content.ids.filechooser.path=self.photos.folder
-        if Window.width > 900:
-            sizehint=(0.4, 0.6)
+        if Window.width > Window.height:
+            sizehint=(0.6, 0.8)
         else:
             sizehint=(0.8, 0.6)
         self._popup = Popup(title="Folder Picker", content=content, auto_dismiss=False, size_hint=sizehint)
@@ -64,7 +71,11 @@ class MainWidget(BoxLayout):
         """ display file's name, image, and exif data """
         if filePath is not None:
             self.displayExifGrid(filePath)
-            self.ids.ImageLabel.text = filePath
+            if self.showFullFilePath:
+                self.ids.ImageLabel.text = filePath
+            else:
+                self.ids.ImageLabel.text = os.path.basename(filePath)
+            
             if 'PhotoIndex' in self.ids:
                 self.ids.PhotoIndex.text = '%i' %(self.photos.index+1)
                 self.ids.PhotoCountLabel.text = '%i' %(len(self.photos.photos))
@@ -98,10 +109,13 @@ class MainWidget(BoxLayout):
 
     def displayTag(self, name, value):
          grid = self.ids.exifGrid
-         label = Label(text=str(name))
-         grid.add_widget(label)
-         label = Label(text=str(value))
-         grid.add_widget(label)
+         keylabel = Label(text=str(name))
+         grid.add_widget(keylabel)
+         vallabel = Label(text=str(value))
+         grid.add_widget(vallabel)
+         if self.overrideGridFontSize:
+             keylabel.font_size = self.gridFontSize
+             vallabel.font_size = self.gridFontSize
 
     #def on_touch_down(self, touch):
     #    print(touch)

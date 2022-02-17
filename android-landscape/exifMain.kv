@@ -1,5 +1,6 @@
 <MainWidget>:
     orientation: 'vertical'
+    #PhotoImage: PhotoImage
   
     BoxLayout:
         orientation: 'horizontal'
@@ -7,8 +8,24 @@
         height: 60
         Label:
             id: ImageLabel
-            size_hint_x: 0.7
+            size_hint_x: 0.6
             text: 'Image Label'
+            font_size: 42
+        TextInput:
+            id: PhotoIndex
+            size_hint_x: 0.04
+            font_size: 42
+            multiline: False
+            text: '0'
+            padding: [14, 4, 6, 6]
+            on_text_validate: root.goto(self.text)
+        Label:
+            size_hint_x: 0.02
+            text: ' / '
+        Label:
+            id: PhotoCountLabel
+            size_hint_x: 0.04
+            text: '0'
         Button:
             id: OpenButton
             size_hint_x: 0.1
@@ -19,24 +36,22 @@
             size_hint_x: 0.1
             text: 'Prev'
             on_release: root.prevPhoto()
-            #on_press: print('press')
         Button:
             id: NextButton
             size_hint_x: 0.1
             text: 'Next'
             on_release: root.nextPhoto()
-            #on_press: print('press')
 
     BoxLayout:
-        orientation: 'vertical'
+        orientation: 'horizontal'
         #size_hint: (1, 1)
 
         Image:
             id: PhotoImage
-            size_hint_x: 1
+            size_hint_x: 0.6
 
         BoxLayout:
-            size_hint_x: 1
+            size_hint_x: 0.4
             orientation: 'vertical'
             
             BoxLayout:
@@ -59,7 +74,7 @@
                     cols: 2
                     size_hint_y: None
                     row_force_default: True
-                    row_default_height: 25
+                    row_default_height: 55
                     padding: 10, 10
                     Label:
                         size_hint_x: 0.4
@@ -78,7 +93,7 @@
 
         BoxLayout:
             size_hint_y: None
-            height: 30
+            height: 70
             Button:
                 text: "Cancel"
                 on_release: root.cancel()
