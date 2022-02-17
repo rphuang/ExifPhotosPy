@@ -49,13 +49,13 @@ The UI is based on Python Kivy, so custom UI can be done by changing the exifMai
 * exifMain-wide.kv - this defines UI for a wide screen. It goes along with exifMainConfig-wide.txt.
 * exifMain-vertical.kv - this defines UI for a small screen. It goes along with exifMainConfig-vertical.txt.
 
-# Issues & Future Development
+# Issues, Notes, and ToDos
 * To support swipe gesture.
 * Run ExifPhotos in Android with Pydroid 3:
     * install Pydroid 3
-    * copy the ExifPhotos files to Pydroid folder (should be under internal storage Android/data). It error out when using folders outside.
+    * copy the ExifPhotos files to Pydroid program folder (should be under internal storage Android/data/...). It errors out when using folders outside.
     * copy the files from either android-landscape or android-portrait to the ExifPhotos folder
-    * from Pudroid 3, open exifMain.py and run
+    * from Pydroid 3, open exifMain.py and run
 * Leverage ExifTool to support more metadata (at least on Windows version)
 * Save the rotated photos (currently, the rotated image is saved in temp folder and only used for image display) 
  
