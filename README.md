@@ -18,6 +18,7 @@ Currently, ExifPhotos uses exifread to extract EXIF from file. The data quality 
 # Configuration
 
 ## exifMainConfig.txt file
+* Window.fullscreen - whether to use full screen mode
 * Window.top - set the top position for the ExifPhotos window
 * Window.left - set the left position for the ExifPhotos window
 * Window.width - set the width for the ExifPhotos window
@@ -45,9 +46,10 @@ Lens Model=MakerNote LensType
 ```
 
 ## Custom UI
-The UI is based on Python Kivy, so custom UI can be done by changing the exifMain.kv file. In the folder, there are two versions of .kv files. Just copy the version of files to exifMain.kv and exifMainConfig.txt.
-* exifMain-wide.kv - this defines UI for a wide screen. It goes along with exifMainConfig-wide.txt.
-* exifMain-vertical.kv - this defines UI for a small screen. It goes along with exifMainConfig-vertical.txt.
+The UI is based on Python Kivy, so custom UI can be done by changing the exifMain.kv file. Besides editing the kv file directly, there are versions of .kv files in the repo. Just copy the files from the subfolder to main folder.
+* android-landscape - this folder contains .kv and config files for Android in landscape mode.
+* android-portrait - this folder contains .kv and config files for Android in portrait mode.
+* windows-landscape - this folder contains .kv and config files for Windows in landscape mode.
 
 # Issues, Notes, and ToDos
 * To support swipe gesture.

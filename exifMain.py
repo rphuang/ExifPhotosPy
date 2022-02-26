@@ -130,15 +130,15 @@ class FolderPickerDialog(FloatLayout):
         self.mainWidget.dismissDialog()
         self.mainWidget.openFolder(path)
 
-# we are defining the Base Class of our Kivy App
+# Kivy App
 class exifMainApp(App):
-    def __init__(self, displayTagsFile):
+    def __init__(self, config):
         super(exifMainApp,self).__init__()
-        self.displayTagsFile = displayTagsFile
+        self.exifConfig = config
 
     def build(self):
         # return a MainWidget() as a root widget
-        self.mainWidget = MainWidget(self.displayTagsFile)
+        self.mainWidget = MainWidget(self.exifConfig)
         return self.mainWidget
 
 if __name__ == '__main__':
